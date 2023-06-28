@@ -353,4 +353,7 @@ public class DefaultLogEventMapper {
         return (ep == null) ? new EndpointInfo() : ep.getEndpointInfo();
     }
 
+    public void setSensitiveDataHelper(DefaultMaskSensitiveHelper maskSensitiveHelper) {
+        this.maskSensitiveHelper = maskSensitiveHelper;
+    }
 }

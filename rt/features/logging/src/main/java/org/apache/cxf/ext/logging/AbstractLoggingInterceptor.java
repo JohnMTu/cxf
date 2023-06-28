@@ -105,6 +105,7 @@ public abstract class AbstractLoggingInterceptor extends AbstractPhaseIntercepto
 
     public void setSensitiveDataHelper(DefaultMaskSensitiveHelper maskSensitiveHelper) {
         this.maskSensitiveHelper = maskSensitiveHelper;
+        this.eventMapper.setSensitiveDataHelper(maskSensitiveHelper);
     }
 
     public void setPrettyLogging(boolean prettyLogging) {

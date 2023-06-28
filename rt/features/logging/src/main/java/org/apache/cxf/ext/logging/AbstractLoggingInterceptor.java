@@ -52,7 +52,7 @@ public abstract class AbstractLoggingInterceptor extends AbstractPhaseIntercepto
     protected LogEventSender sender;
     protected final DefaultLogEventMapper eventMapper = new DefaultLogEventMapper();
 
-    protected MaskSensitiveHelper maskSensitiveHelper = new MaskSensitiveHelper();
+    protected DefaultMaskSensitiveHelper maskSensitiveHelper = new DefaultMaskSensitiveHelper();
 
     protected Set<String> sensitiveProtocolHeaderNames = new HashSet();
 
@@ -103,7 +103,7 @@ public abstract class AbstractLoggingInterceptor extends AbstractPhaseIntercepto
         this.sensitiveProtocolHeaderNames.addAll(protocolHeaderNames);
     }
 
-    public void setSensitiveDataHelper(MaskSensitiveHelper maskSensitiveHelper) {
+    public void setSensitiveDataHelper(DefaultMaskSensitiveHelper maskSensitiveHelper) {
         this.maskSensitiveHelper = maskSensitiveHelper;
     }
 

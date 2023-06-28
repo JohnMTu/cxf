@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 import org.apache.cxf.message.Message;
 
-public class MaskSensitiveHelper {
+public class DefaultMaskSensitiveHelper {
     private static final String ELEMENT_NAME_TEMPLATE = "-ELEMENT_NAME-";
     private static final String MATCH_PATTERN_XML_TEMPLATE = "(<-ELEMENT_NAME-.*?>)(.*?)(</-ELEMENT_NAME->)";
     private static final String REPLACEMENT_XML_TEMPLATE = "$1XXX$3";

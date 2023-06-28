@@ -34,7 +34,7 @@ import javax.security.auth.Subject;
 import org.apache.cxf.binding.Binding;
 import org.apache.cxf.configuration.security.AuthorizationPolicy;
 import org.apache.cxf.endpoint.Endpoint;
-import org.apache.cxf.ext.logging.MaskSensitiveHelper;
+import org.apache.cxf.ext.logging.DefaultMaskSensitiveHelper;
 import org.apache.cxf.helpers.CastUtils;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.message.MessageUtils;
@@ -64,7 +64,7 @@ public class DefaultLogEventMapper {
 
     private final Set<String> binaryContentMediaTypes = new HashSet<>(DEFAULT_BINARY_CONTENT_MEDIA_TYPES);
 
-    private MaskSensitiveHelper maskSensitiveHelper = new MaskSensitiveHelper();
+    private DefaultMaskSensitiveHelper maskSensitiveHelper = new DefaultMaskSensitiveHelper();
 
     public void addBinaryContentMediaTypes(String mediaTypes) {
         if (mediaTypes != null) {

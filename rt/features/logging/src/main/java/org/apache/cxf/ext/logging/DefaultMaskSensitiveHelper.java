@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 import org.apache.cxf.message.Message;
 
-public class DefaultMaskSensitiveHelper {
+public class DefaultMaskSensitiveHelper implements MaskSensitiveHelper {
     private static final String ELEMENT_NAME_TEMPLATE = "-ELEMENT_NAME-";
     private static final String MATCH_PATTERN_XML_TEMPLATE = "(<-ELEMENT_NAME-.*?>)(.*?)(</-ELEMENT_NAME->)";
     private static final String REPLACEMENT_XML_TEMPLATE = "$1XXX$3";
@@ -72,6 +72,7 @@ public class DefaultMaskSensitiveHelper {
         replacements.add(new ReplacementPair(matchPatternXML, replacementXML));
     }
 
+    @Override
     public String maskSensitiveElements(
             final Message message,
             final String originalLogString) {
@@ -93,6 +94,7 @@ public class DefaultMaskSensitiveHelper {
         return originalLogString;
     }
 
+    @Override
     public void maskHeaders(
             final Map<String, String> headerMap,
             final Set<String> sensitiveHeaderNames) {

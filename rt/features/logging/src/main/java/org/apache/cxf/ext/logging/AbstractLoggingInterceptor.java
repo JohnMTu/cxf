@@ -52,7 +52,7 @@ public abstract class AbstractLoggingInterceptor extends AbstractPhaseIntercepto
     protected LogEventSender sender;
     protected final DefaultLogEventMapper eventMapper = new DefaultLogEventMapper();
 
-    protected DefaultMaskSensitiveHelper maskSensitiveHelper = new DefaultMaskSensitiveHelper();
+    protected MaskSensitiveHelper maskSensitiveHelper = new DefaultMaskSensitiveHelper();
 
     protected Set<String> sensitiveProtocolHeaderNames = new HashSet();
 
@@ -87,11 +87,15 @@ public abstract class AbstractLoggingInterceptor extends AbstractPhaseIntercepto
     }
 
     public void setSensitiveElementNames(final Set<String> sensitiveElementNames) {
-        maskSensitiveHelper.setSensitiveElementNames(sensitiveElementNames);
+        if (maskSensitiveHelper instanceof DefaultMaskSensitiveHelper) {
+            ((DefaultMaskSensitiveHelper)maskSensitiveHelper).setSensitiveElementNames(sensitiveElementNames);
+        }
     }
-    
+
     public void addSensitiveElementNames(final Set<String> sensitiveElementNames) {
-        maskSensitiveHelper.addSensitiveElementNames(sensitiveElementNames);
+        if (maskSensitiveHelper instanceof DefaultMaskSensitiveHelper) {
+            ((DefaultMaskSensitiveHelper)maskSensitiveHelper).addSensitiveElementNames(sensitiveElementNames);
+        }
     }
 
     public void setSensitiveProtocolHeaderNames(final Set<String> protocolHeaderNames) {
@@ -103,7 +107,7 @@ public abstract class AbstractLoggingInterceptor extends AbstractPhaseIntercepto
         this.sensitiveProtocolHeaderNames.addAll(protocolHeaderNames);
     }
 
-    public void setSensitiveDataHelper(DefaultMaskSensitiveHelper maskSensitiveHelper) {
+    public void setSensitiveDataHelper(MaskSensitiveHelper maskSensitiveHelper) {
         this.maskSensitiveHelper = maskSensitiveHelper;
         this.eventMapper.setSensitiveDataHelper(maskSensitiveHelper);
     }

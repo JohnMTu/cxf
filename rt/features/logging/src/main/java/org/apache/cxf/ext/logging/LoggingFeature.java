@@ -204,7 +204,7 @@ public class LoggingFeature extends DelegatingFeature<LoggingFeature.Portable> {
      *
      * @param maskSensitiveHelper new maskSensitiveHelper to be used.
      */
-    public void setSensitiveDataHelper(DefaultMaskSensitiveHelper maskSensitiveHelper) {
+    public void setSensitiveDataHelper(MaskSensitiveHelper maskSensitiveHelper) {
         delegate.setSensitiveDataHelper(maskSensitiveHelper);
     }
     
@@ -313,7 +313,7 @@ public class LoggingFeature extends DelegatingFeature<LoggingFeature.Portable> {
             out.addSensitiveProtocolHeaderNames(sensitiveProtocolHeaderNames);
         }
         
-        public void setSensitiveDataHelper(DefaultMaskSensitiveHelper maskSensitiveHelper) {
+        public void setSensitiveDataHelper(MaskSensitiveHelper maskSensitiveHelper) {
             in.setSensitiveDataHelper(maskSensitiveHelper);
             out.setSensitiveDataHelper(maskSensitiveHelper);
         }
